@@ -1,0 +1,27 @@
+ul {
+  list-style: none;
+  font-size: 13px;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.children {
+  display: flex;
+  margin: auto;
+  gap: 20px;
+}
+
+.children > li {
+  margin: 0 auto;
+}
+
+.serviceOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 43px;
+}
