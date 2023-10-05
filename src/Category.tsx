@@ -61,6 +61,7 @@ const Category = ({item, state, setState}: Props) => {
             {
                 toggleOptions
                 ? <div className="options">
+                    <p>What do you want to create?</p>
                     <button className='addCategory' onClick={() => {
                         setToggleInput(true)
                         setType('category')
