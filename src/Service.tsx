@@ -4,7 +4,7 @@ interface Props {
 const Service = ({name}: Props) => {
   return (
     <li className='serviceOption'>
-        <span>{name}</span>
+        <p>{name}</p>
     </li>
   )
 }
