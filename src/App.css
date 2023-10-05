@@ -101,6 +101,12 @@ li:last-child::before, li:first-child:after {
   margin: 0 auto;
 }
 
+input {
+  padding: 0.4em;
+  border-radius: 0.2em;
+  border: none;
+}
+
 button {
   font-size: 1em;
   outline: none;
