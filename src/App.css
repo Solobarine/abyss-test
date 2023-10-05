@@ -95,10 +95,22 @@ button {
 }
 
 .options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 0.6em;
+  padding: 0.3em;
+  background-color: var(--accent-two);
   gap: 1em;
+  z-index: 3;
+}
+
+.options > p {
+  grid-column: 1 / -1;
+  font-size: 0.9em;
 }
 
 .plusButton {
