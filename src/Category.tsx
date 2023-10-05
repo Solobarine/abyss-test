@@ -31,7 +31,7 @@ const Category = ({item, state, setState}: Props) => {
                 ?
                 <>
                     <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-                    <button onClick={() => {
+                    <button className='plusButton' onClick={() => {
                         if (type === 'category') {
                             const data: CategoryInterface = {
                                 name: text,
@@ -39,16 +39,20 @@ const Category = ({item, state, setState}: Props) => {
                             }
                             values.children?.push(data)
                             setState([...state])
+                            setText('')
                             setToggleInput(false)
                             setToggleMainPlus(true)
+                            localStorage.setItem('categories', JSON.stringify(state))
                         } else {
                             const data: ServiceInterface = {
                                 name: text
                             }
                             values.children?.push(data)
                             setState([...state])
+                            setText('')
                             setToggleInput(false)
                             setToggleMainPlus(true)
+                            localStorage.setItem('categories', JSON.stringify(state))
                         }
                     }}>&#x002B;</button>
                 </>
@@ -57,12 +61,12 @@ const Category = ({item, state, setState}: Props) => {
             {
                 toggleOptions
                 ? <div className="options">
-                    <button onClick={() => {
+                    <button className='addCategory' onClick={() => {
                         setToggleInput(true)
                         setType('category')
                         setToggleOptions(false)
                     }}>Category</button>
-                    <button onClick={() => {
+                    <button className='addService' onClick={() => {
                         setToggleInput(true)
                         setType('service')
                         setToggleOptions(false)
@@ -73,7 +77,7 @@ const Category = ({item, state, setState}: Props) => {
             {
                 toggleMainPlus
                 ?
-                <button onClick={
+                <button className='plusButton' onClick={
                     () => {
                         setToggleOptions(true)
                         setToggleMainPlus(false)
@@ -83,25 +87,21 @@ const Category = ({item, state, setState}: Props) => {
             }
         </div>
         {
-            <div className='children'>
-                {
-                    (values.children)
-                    ?
-                    values.children.map((val: CategoryInterface, index) => (
-                        val.children
-                        ?
-                        <li>
-                            <Category
-                            item={val}
-                            key={index}
-                            state={state}
-                            setState={setState} />
-                        </li>
-                        : <Service name={val.name} />
-                    ))
-                    : null
-                }
-            </div>
+            (values.children)
+            ?
+            values.children.map((val: CategoryInterface, index) => (
+                val.children
+                ?
+                <li>
+                    <Category
+                    item={val}
+                    key={index}
+                    state={state}
+                    setState={setState} />
+                </li>
+                : <Service name={val.name} />
+            ))
+            : null
         }
     </ul>
   )
